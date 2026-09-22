@@ -6,7 +6,7 @@ WORKDIR /app
 
 RUN apk upgrade --no-cache
 
-RUN npm install -g npm@latest
+RUN npm install -g npm@11.6.2
 
 # Copiar archivos de dependencias y ajustar permisos para el usuario 'node'
 COPY package*.json ./
