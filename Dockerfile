@@ -1,8 +1,12 @@
 # Imagen base ligera
-FROM node:20-alpine
+FROM node:22-alpine
 
 # Directorio de trabajo
 WORKDIR /app
+
+RUN apk upgrade --no-cache
+
+RUN npm install -g npm@latest
 
 # Copiar archivos de dependencias y ajustar permisos para el usuario 'node'
 COPY package*.json ./
