@@ -1,0 +1,6 @@
+# Ignorar dependencias globales de Node y NPM en la imagen base
+usr/local/lib/node_modules/npm/*
+opt/yarn-v1.22.22/*
+
+# Opcional: ignorar ruta específica si sigue apareciendo
+usr/local/lib/node_modules/npm/node_modules/*
