@@ -37,6 +37,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+          skip-dirs: '/usr/local/lib/node_modules/npm,/opt/yarn-v1.22.22'
 
   deploy:
     needs: security-and-build

@@ -4,13 +4,14 @@ FROM node:22-alpine
 # Directorio de trabajo
 WORKDIR /app
 
-RUN apk upgrade --no-cache
+# Actualizar paquetes del sistema base
+RUN apk upgrade --no-cache 
 
-RUN npm install -g npm@11.6.2
-
-# Copiar archivos de dependencias y ajustar permisos para el usuario 'node'
+# Copiar archivos de dependencias
 COPY package*.json ./
-RUN npm install --only=production
+
+# Instalar solo dependencias de producción y limpiar caché
+RUN npm ci --only=production && npm cache clean --force
 
 # Copiar el código de la aplicación
 COPY . .
@@ -24,5 +25,6 @@ USER node
 # Exponer el puerto
 EXPOSE 8080
 
-# Comando de inicio
-CMD ["npm", "start"]
+# Comando de inicio recomendado (ejecuta node directamente)
+CMD ["node", "index.js"]
+
